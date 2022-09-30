@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Loan application</title>
+    <link rel="stylesheet" href="./cards.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="google" value="notranslate" />
+    <link rel="stylesheet" type="text/css"
+        href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./accounts.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+
+        </header>
+
+        <main class="d-flex justify-content-center align-items-center flex-column fondo" style="min-height:100vh ;">
+            <video src="./assets/video/Medusa - 10480 (1).mp4" muted autoplay loop></video>
+            <div class="app rounded-5 mediaqueries">
+                <div class="container-fluid d-flex flex-row justify-content-between w-100">
+                    <div class="app-header-actions d-flex flex-row justify-content-between w-100 align-items-center">
+                        <button class="user-profile">
+                            <span>Hello {{cliente.firstName}} {{cliente.lastName}}</span>
+                            <span class="bg-primary text-white" style="background: rgb(9,9,121);
+                            background: linear-gradient(103deg, rgba(9,9,121,1) 0%, rgba(1,83,107,1) 48%, rgba(0,132,182,1) 100%);">
+                                {{nameSlice}} {{lastNameSlice}}
+                            </span>
+                        </button>
+<!--                         <nav class="navigation">
+                            <div class="app-header-navigation">
+                                <div class="tabs d-flex align-items-center">
+                                    <a href="./accounts.html" class="mt-3">
+                                        Accounts
+                                    </a>
+                                    <a href="./cards/cards.html">
+                                        Cards
+                                    </a>
+                                    <a href="./transactions/transfer.html">
+                                        Transfer
+                                    </a>
+                                    <a href="#" class="active">
+                                        Loans
+                                    </a>
+                                    <a href="#">
+                                        System
+                                    </a>
+                                    <a href="#">
+                                        Business
+                                    </a>
+                                    <a @click="logout()">
+                                        <svg class="text-white" xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                            fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                                            <path fill-rule="evenodd"
+                                                d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </nav> -->
+                        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgb(31,31,31) ;">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                                <ul class="navbar-nav ms-auto tabs d-flex align-items-center">
+                                    <li class="nav-item">
+                                        <a href="./accounts.html">
+                                            Accounts
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="./cards/cards.html">
+                                            Cards
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="./transactions/transfer.html">
+                                            Transfer
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="./loan-application.html">
+                                            Loans
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="active">
+                                            Payments
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a @click="logout()" class="">
+                                            <svg class="text-white" xmlns="http://www.w3.org/2000/svg" width="25"
+                                                height="25" fill="currentColor" class="bi bi-box-arrow-right"
+                                                viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="app-body d-flex justify-content-center align-items-center" style="height:100%;">
+                    <div class="container w-50">
+                        <div class="row justify-content-center">
+                            <form class="shadow-lg p-3 mb-5 bg-white rounded d-flex flex-column " @submit.prevent="">
+                                <h2 class="text-dark">Payments</h2>
+                                    <label for="accountSelected" class="fs-5 text-dark">Select an account</label>
+                                    <select name="accountSelected" id="accountSelected" v-model="accountSelected" class="bg-dark fs-5 text-white">
+                                        <option :value="account.number" v-for="account in activeAccounts">{{account.number}}</option>
+                                    </select>
+                                    <label for="cardHolderSelected" class="fs-5 text-dark">Enter the card holder</label>
+                                    <input type="text" name="cardHolderSelected" id="cardHolderSelected" v-model="cardHolderSelected" class="bg-dark fs-5 text-white">
+                                    <label for="cardNumberSelected" class="fs-5 text-dark">Select a card</label>
+                                    <select name="cardNumberSelected" id="cardNumberSelected" v-model="cardNumberSelected" class="bg-dark fs-5 text-white">
+                                        <option :value="card.number" v-for="card in activeCards" class="text-white">{{card.number}}</option>
+                                    </select>
+                                    <label for="amountSelected" class="fs-5 text-dark">Enter the amount</label>
+                                    <input type="number" name="amountSelected" v-model="amountSelected" id="amountSelected" placeholder="$" class="bg-dark fs-5 text-white">
+                                    <label for="cvvSelected" class="fs-5 text-dark">Enter the cvv</label>
+                                    <input type="number" name="cvvSelected" v-model="cvvSelected" id="cvvSelected" class="bg-dark fs-5 text-white">
+                                    <label for="thruDateSelected" class="fs-5 text-dark">Enter the thrudate</label>
+                                    <select name="thruDateSelected" id="thruDateSelected" v-model="thruDateSelected" class="bg-dark fs-5 text-white">
+                                        <option :value="card.thruDate" v-for="card in activeCards">{{card.thruDate.slice(2,7)}} of {{card.number}}</option>
+                                    </select>
+                                    <label for="descriptionSelected" class="fs-5 text-dark">Enter a description</label>
+                                    <textarea name="" v-model="descriptionSelected" id="description" cols="20" rows="7"
+                                    style="resize: none;" placeholder="" class="bg-dark fs-5 text-white"></textarea>
+                                    <div class="d-flex justify-content-center ">
+                                        <button @click="makePayment()" class="custom-btn btn-1 mt-4 justify-content-center">Pay</button>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+
+        </footer>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="./payment.js"></script>
+</body>
+
+</html>

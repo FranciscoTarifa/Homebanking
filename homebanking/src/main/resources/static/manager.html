@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabla de Clientes</title>
+    <link rel="stylesheet" href="./manager.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body style="background-color:wheat ;">
+    <div id="app">
+    <main class="">
+        <section class="mt-5 d-flex justify-content-center align-items-center flex-column">
+        <h2 class="fs-1 bg-dark text-white rounded-3 p-1">Client Manager </h2>
+        <form class="container" action="" ></form>
+            <div class="mb-3 w-25">
+                <label for="nombre" class="form-label bg-dark text-white rounded-3 p-1">Name:</label>
+                <input type="text" class="form-control" id="nombre" placeholder="David" v-model="valorFirst">
+            </div>
+            <div class="mb-3 w-25">
+                <label for="lastname" class="form-label bg-dark text-white rounded-3 p-1">Last Name:</label>
+                <input type="text" class="form-control" id="lastname" placeholder="Doe" v-model="valorLast">
+            </div>
+            <div class="mb-3 w-25">
+                <label for="email" class="form-label bg-dark text-white rounded-3 p-1">Email address:</label>
+                <input type="email" class="form-control" id="email" placeholder="david@aol.com" v-model="valorEmail">
+            </div>
+            <button @click="agregarClientes()" type="submit" class="btn btn-dark mt-3">Add client</button>
+        </section>
+        <section class="container-fluid d-flex flex-column justify-content-center align-items-center">
+            <h2 class="d-flex justify-content-center mt-5 mb-5 fs-1 bg-dark text-white rounded-3 p-1" >Client List</h2>
+            <table class="table w-50 justify-content-center border-0 fs-5">
+                <thead class="w-100 bg-dark text-white">
+                <tr class="">
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="client in clientList">
+                    <td>{{client.firstName}}</td>
+                    <td>{{client.lastName}}</td>
+                    <td>{{client.email}}</td>
+                    <td class="gap-3">
+                        <button @click="eliminarCliente(client)" type="submit" class="btn btn-dark mt-3 mx-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        </button>
+                        <button @click="editarCliente(client)" type="submit" class="btn btn-dark mt-3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                            </svg>
+                        </button>
+                        <a :href="'/web/accounts.html?id='+client.id">  
+                            <button type="submit" class="btn btn-dark mt-3 mx-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                </svg>
+                            </button>
+                        </a>
+                        <a :href="'/web/cards/cards.html?id='+client.id">  
+                            <button type="submit" class="btn btn-dark mt-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card-2-front-fill" viewBox="0 0 16 16">
+                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zm0 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
+                                </svg>
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="d-flex justify-content-center flex-column align-items-center">
+            <h2>Client REST Response</h2>
+            <pre class="col-6 bg-dark text-white p-2 rounded-1 mt-5">{{clientList}}</pre>
+        </section>
+    </main>
+    </div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@3"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="./manager.js"></script>
+</body>
+</html>

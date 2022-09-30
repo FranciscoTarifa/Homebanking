@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Accounts</title>
+    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./accounts.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="google" value="notranslate" />
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+
+        </header>
+
+        <main class="d-flex justify-content-center align-items-center flex-column fondo" style="min-height:100vh;">
+            <video src="./assets/video/Medusa - 10480 (1).mp4" muted autoplay loop></video>
+            <div class="app rounded-5">
+                <div class="container-fluid d-flex flex-row justify-content-between w-100">
+                    <div class="app-header-actions d-flex flex-row justify-content-between w-100 align-items-center">
+                        <button class="user-profile">
+                            <span>Hello {{cliente.firstName}} {{cliente.lastName}}</span>
+                            <span class="bg-primary text-white" style="background: rgb(9,9,121);
+                            background: linear-gradient(103deg, rgba(9,9,121,1) 0%, rgba(1,83,107,1) 48%, rgba(0,132,182,1) 100%);">
+                                {{nameSlice}} {{lastNameSlice}}
+                            </span>
+                        </button>
+                        <!-- <nav class="navigation">
+                            <div class="app-header-navigation">
+                                <div class="tabs d-flex align-items-center">
+                                    <a href="#" class="active mt-3">
+                                        Accounts
+                                    </a>
+                                    <a :href="'./cards/cards.html?id='+cliente.id">
+                                        Cards
+                                    </a>
+                                    <a href="./transactions/transfer.html">
+                                        Transfer
+                                    </a>
+                                    <a href="./loan-application.html">
+                                        Loans
+                                    </a>
+                                    <a href="#">
+                                        System
+                                    </a>
+                                    <a href="#">
+                                        Business
+                                    </a>
+                                    <a @click="logout()" class="">
+                                        <svg class="text-white" xmlns="http://www.w3.org/2000/svg" width="25"
+                                            height="25" fill="currentColor" class="bi bi-box-arrow-right"
+                                            viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                                            <path fill-rule="evenodd"
+                                                d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </nav> -->
+                        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgb(31,31,31) ;">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                                <ul class="navbar-nav ms-auto tabs d-flex align-items-center">
+                                    <li class="nav-item">
+                                        <a href="#" class="active nav-link">
+                                            Accounts
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a :href="'./cards/cards.html?id='+cliente.id">
+                                            Cards
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="./transactions/transfer.html">
+                                            Transfer
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="./loan-application.html">
+                                            Loans
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="./payment.html">
+                                            Payments
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a @click="logout()" class="">
+                                            <svg class="text-white" xmlns="http://www.w3.org/2000/svg" width="25"
+                                                height="25" fill="currentColor" class="bi bi-box-arrow-right"
+                                                viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd"
+                                                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z" />
+                                                <path fill-rule="evenodd"
+                                                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                                            </svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="app-body">
+                    <div class="app-body-main-content">
+                        <section class="service-section d-flex justify-content-center flex-column">
+                            <div class="transfer-section-header">
+                                <h2 class="text-white">Your accounts</h2>
+                                <div v-if="activeAccounts.length <3">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="custom-btn btn-1 p-2 mx-5 fs-6 bg-dark" data-bs-toggle="modal"
+                                        data-bs-target="#addAccountModal">
+                                        Add account
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="addAccountModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content bg-dark">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-white" id="exampleModalLabel">Select the type of
+                                                        account to create</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="formmodal">
+                                                        <label for="createaccount" class="text-white mx-3">Type: </label>
+                                                        <select name="createaccount" id="createaccount"
+                                                            v-model="accountType" class="bg-dark text-white">
+                                                            <option value="SAVING" class="bg-dark text-white">Saving account</option>
+                                                            <option value="CURRENT" class="bg-dark text-white">Current account</option>
+                                                        </select>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button @click="createAccount()"
+                                                        class="custom-btn btn-1 mx-5 fs-6"><span>Add
+                                                            account</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="custom-btn p-2 btn-1 mx-5 fs-6" data-bs-toggle="modal"
+                                        data-bs-target="#deleteAccountModal">
+                                        Delete account
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="deleteAccountModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content bg-dark">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-white" id="exampleModalLabel">Select the account
+                                                        you want to delete </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body bg-dark">
+                                                    <form class="formmodal w-100">
+                                                        <label for="deleteaccount" class="text-white mx-3">Account:</label>
+                                                        <select name="deleteaccount" id="deleteaccount"
+                                                            v-model="accountNumber"  class="bg-dark text-white">Select account number
+                                                            <option :value="activeaccount.number"
+                                                                v-for="activeaccount in activeAccounts" class="bg-dark text-white">    
+                                                                {{activeaccount.number}}</option>
+                                                        </select>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button @click="deleteAccount()"
+                                                        class="custom-btn btn-1 mx-5 fs-6"><span>Delete
+                                                            account</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="custom-btn btn-1 mx-5 fs-6" data-bs-toggle="modal"
+                                        data-bs-target="#printTransfers">
+                                        Print movements
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="printTransfers" tabindex="-1"
+                                        aria-labelledby="printTransfers" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content bg-dark">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-white" id="printTransfers">Select the account for which you want to print the movements </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body bg-dark h-100 w-100">
+                                                    <form class="bg-dark gap-3 w-100 h-100 d-flex flex-column bg-dark formmodal">
+                                                        <label for="printTransfers" class="text-white">Account:</label>
+                                                        <select name="printTransfers" id="printTransfers"
+                                                            v-model="accountNumberPrint" class="bg-dark text-white">Select account number
+                                                            <option :value="activeaccount.number"
+                                                                v-for="activeaccount in activeAccounts">
+                                                                {{activeaccount.number}}</option>
+                                                        </select>
+                                                        <div class="d-flex justify-content-between">
+                                                        <label for="fromdate" class="text-white">Date:</label>
+                                                        <input type="date" v-model="fromDate"  class="bg-dark text-white">
+                                                        <input type="date" v-model="toDate"  class="bg-dark text-white">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button @click="printTransfers()"
+                                                        class="custom-btn btn-1 mx-5 fs-6"><span>Print movements</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tiles w-100">
+                                
+                                <article v-for="account in activeAccounts" class="tile"
+                                    style="color:white ; font-family:  Lato, sans-serif;">
+                                    <span style="z-index: 2;" class="bg-dark rounded-2 p-1 w-25 fs-6 fw-bolder d-flex justify-content-center">{{account.accountType}}</span>
+                                    <video src="./assets/video/Azul - 22908.mp4" muted autoplay loop
+                                        class="rounded-5"></video>
+                                    <div class="d-flex flex-column fs-3 justify-content-start">
+                                        <span class="w-100">Account: {{account.number}}</span>
+                                        <span>Balance: $ {{account.balance.toLocaleString('es-MX')}}</span>
+                                        <span>Creation date: {{account.creationDate}}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-end align-items-end">
+                                        <button class="user-profile">
+                                            <a :href="'./transactions/account.html?id='+account.id"
+                                                style="color:white ;" class="d-flex gap-3">
+                                                <span>See transactions</span>
+                                                <span class="icon-button">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-chevron-right"
+                                                        viewBox="0 0 16 16">
+                                                        <path fill-rule="evenodd"
+                                                            d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                        </button>
+                                    </div>
+                                </article>
+                            </div>
+                        </section>
+                    </div>
+                    <section class="transfer-section w-100">
+                        <div class="transfer-section-header">
+                            <h2 class="text-white">Your loans</h2>
+                            <div class="filter-options">
+                            </div>
+                        </div>
+                        <div v-if="loans.length >1" v-for="loan in loans" class="transfers">
+                            <div class="transfer">
+                                <div class="transfer-logo mb-3" style="width: 4.5rem; background-color: rgb(31,31,31);">
+                                    <img src="./assets/img/pngwing.com.png" />
+                                </div>
+                                <dl class="transfer-details text-light fs-5">
+                                    <div>
+                                        <dt>Loan Name: </dt>
+                                        <dd>{{loan.loanName}}</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Amount Loan: </dt>
+                                        <dd>$ {{loan.amount.toLocaleString('es-MX')}}</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Payments: </dt>
+                                        <dd>{{loan.payments}}</dd>
+                                    </div>
+                                </dl>
+                            </div>
+                        </div>
+                        <div v-else="loans.length == 0">
+                            <div class="transfer mt-3">
+                                <div class="transfer-logo mb-3" style="width: 4.5rem; background-color: rgb(31,31,31);">
+                                    <img src="./assets/img/pngwing.com.png" />
+                                </div>
+                                <dl class="transfer-details text-light">
+                                    <h6 class="text-white d-flex">Your account does not have active loans</h6>
+                                </dl>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+
+        </footer>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="./accounts.js"></script>
+
+</body>
+
+</html>
